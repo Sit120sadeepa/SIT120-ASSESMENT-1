@@ -3,55 +3,101 @@
     <title>Assignment</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
         .sidebar a {font-family: "Roboto", sans-serif}
-        body,h1,h2,h3,h4,h5,h6,.wide {font-family: "Montserrat", sans-serif;}
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif;}
         </style>
     </head>
-<body class="content" style="max-width:1200px">
-      <!-- Sidebar/menu -->
-<nav class="sidebar w3-bar-block" style="z-index:3;width:250px" id="mySidebar">
-    <div class="container display-container ">
-      <i onclick="close()" class="hide-large button w3-display-topright"></i>
-      <h3 class="wide"><b>TRUCKERS</b></h3>
-    </div>
-    <div class="w3-padding-64 large text-grey" style="font-weight:bold">
-      <a href="#" class="w3-bar-item w3-button">HOME</a>
-      <a href="#" class="w3-bar-item w3-button">TRUCKS</a>
-      <a href="#" class="w3-bar-item w3-button">PICK-UPS</a>
-      <a href="#" class="w3-bar-item w3-button">VAN</a>
+<body>
+    <!--Sidebar/menu-->
+    <nav class="sidebar w3-collapse" style="z-index:3;width:250px" id="mySidebar">
+        <div class="table relative-positioning ">
+        <h2><b>TRUCKERS</b></h2>
+        </div>
+        <div class="topnav grey" style="font-weight:bold">
+            <a href="Index.html" class="bar-item button">HOME</a>
+            <a href="#About" class="bar-item button">ABOUT</a>
+            <a href="#" class="bar-item button">TRUCKS</a>
+            <a href="#" class="bar-item button">COMPLAINTS</a>
+        </div>
+        <div class="padding"></div>
+        <a href="#footer" class="bar-item button1 ">Contact</a> 
+        <a href="#footer" class="bar-item button1 ">Newsletter</a> 
+        <a href="#subscribe" class="bar-item button1 ">Subscribe</a> 
+    </nav>
+   
+    <!--navigation bar in small screen-->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+        <div class="w3-bar-item w3-padding-24 w3-wide">TRUCKERS</div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+      </header>
+      
+      <!-- Overlay effect when opening sidebar on small screens -->
+      <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+           
+   
+    <!--Image/body content-->
+    <div class="table relative-positioning">
+        <img src="IMAGE1.jpg" alt="Trucks" style="width:100%"  >
+        <div class="display-topright text-white" style="padding:24px 48px">
+        <p><a href="#" class="button2 black padding large"><i class="fa fa-search" style="margin-right:16px"></i>SEARCH</a></p>
+        </div>
+      </div>
+
+      
+  
+      <div id="About" class="padding-641">
+      <h1>HELLO THERE!</h1>
+      <P>Truckers help the truck lovers to improve their knowledge about trucks. 
+        Truckers will help people who are intending to buy trucks. 
+        Because from Truckers, they can easily have an idea which truck should I consider?
+         And for truck lovers, they can save photos if they wish to download.</P>
+      <img src="IMAGE2.jpg" alt="Trucks" style="width:100%"  >
+
 
     </div>
-    <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-    <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
-  </nav>   
-  
-  <!-- Top menu on small screens -->
-<header class="bar top hide-large black xlarge">
-    <div class="bar-item w3-padding-24 wide">CAR DIARY</div>
-    <a href="javascript:void(0)" class="bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-  </header>
-  
-  <!-- Overlay effect when opening sidebar on small screens -->
-  <div class="overlay hide-large" onclick="close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-  
-  <!-- !PAGE CONTENT! -->
-  <div class="main" style="margin-left:250px">
-  
-    <!-- Push down content on small screens -->
-    <div class="hide-large" style="margin-top:83px"></div>
     
+    
+    <div id="subscribe" class="padding-641"> 
+      <label for="email">E-mail:</label>  <br>
+      <input id="email" type="text" placeholder="someone@gmail.com"><br>
+
+      <div id="app">
+        <button v-on:click="show = !show">
+          Subscribe
+        </button>
+        <transition name="fade">
+        <p v-if="show">
+          <h1>THANK YOU FOR SUBSCRIBING </h1>
+        </p>
+        </transition>
+      </div>
+    <img src="IMAGE4.jpg" alt="Pickups" style="width: 100%;">
+     </div>
 
 
-  <!-- Image header -->
-  <div class="display-container container">
-    <img src="brian.jpg" alt="Jeans" style="width:100%">
-    <div class="display-topright text-white" style="padding:24px 48px">
-      <h1 class="w3-jumbo hide-small">TRUCK IMAGE</h1>
-      <h1 class="w3-hide-small">COLLECTION</h1>
-      <p><a href="#jeans" class="w3-button black padding-large large">SEE MORE</a></p>
-    </div>
-  </div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+      show: true
+    }
+  })
+
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+</body>
+</html>
